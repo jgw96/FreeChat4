@@ -1,0 +1,51 @@
+<!--
+   Angular 2 Starter
+   Dan Wahlin
+
+   @DanWahlin
+   http://weblogs.asp.net/dwahlin
+   http://github.com/danwahlin
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base href="/"></base>
+    <title>Shooping</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Angular 2 Starter">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="/modules/animate.css/animate.min.css">
+    <link href="/modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/lists.css">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+
+    <main>
+        <app>
+            Loading...
+        </app>
+
+    </main>
+
+
+
+    <script src="/modules/systemjs/dist/system.src.js"></script>
+    <script src="/modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="/modules/angular2/bundles/http.dev.js"></script>
+    <script src="/modules/angular2/bundles/router.dev.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/modules/localforage/dist/localforage.min.js"></script>
+    <script>
+        System.config({
+            packages: {'app': {defaultExtension: 'js'}}
+        });
+        System.import('app/bootstrap').catch(console.log.bind(console));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<section class="skin-comms" role="region">
+  <header id="test" class="animated">
+    <button [router-link]="['/Items']"><span class="icon icon-back">back</span></button>
+    <menu type="toolbar">
+      <button><span class="icon icon-ad">add</span></button>
+    </menu>
+    <h1>Settings</h1>
+  </header>
+</section>
+<main id="testTwo" class="animated" data-type="list">
+  <header id="headerText">Settings</header>
+  <ul>
+    <li (click)="clearMessages()">
+        <p>Clear Messages</p>
+    </li>
+	<li>
+		<p>Dark Theme</p>
+	</li>
+  </ul>
+</main>
