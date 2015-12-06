@@ -25,7 +25,7 @@ export class NewsComponent implements OnActivate {
 	constructor(private storageService: StorageService) {
 		this.storageService.init();
 		//this.messages = [];
-        this.socket = io.connect("https://freechat-firefox.herokuapp.com//News");
+        this.socket = io.connect("https://freechat-firefox.herokuapp.com/News");
         this.username = localStorage.getItem("username");
 		
 		localforage.getItem("newsMessages", (err, value) => {

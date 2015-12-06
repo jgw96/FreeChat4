@@ -28,7 +28,7 @@ export class ItemsComponent implements OnActivate {
   constructor(private storageService: StorageService) {
     Notification.requestPermission();
     this.storageService.init();
-    this.socket = io.connect("https://freechat-firefox.herokuapp.com/");
+    this.socket = io.connect("https://freechat-firefox.herokuapp.com");
     this.username = localStorage.getItem("username");
     
     localforage.getItem("messages", (err, value) => {
