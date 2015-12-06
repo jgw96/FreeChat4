@@ -25,7 +25,7 @@ export class NewsComponent implements OnActivate {
 	constructor(private storageService: StorageService) {
 		this.storageService.init();
 		//this.messages = [];
-        this.socket = io.connect("http://192.168.0.6:8080/News");
+        this.socket = io.connect("https://enigmatic-dawn-6875.herokuapp.com/News");
         this.username = localStorage.getItem("username");
 		
 		localforage.getItem("newsMessages", (err, value) => {

@@ -18,7 +18,7 @@ var ItemsComponent = (function () {
         this.storageService = storageService;
         Notification.requestPermission();
         this.storageService.init();
-        this.socket = io.connect("http://192.168.0.6:8080");
+        this.socket = io.connect("https://enigmatic-dawn-6875.herokuapp.com");
         this.username = localStorage.getItem("username");
         localforage.getItem("messages", function (err, value) {
             if (err) {
