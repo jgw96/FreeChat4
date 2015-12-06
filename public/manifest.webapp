@@ -4,7 +4,7 @@
   "launch_path": "/index.html",
   "icons": {
     "512": "/notes512.png",
-    "128": "/notes/notes128.png"
+    "128": "/notes128.png"
   },
   "developer": {
     "name": "Justin Willis",
