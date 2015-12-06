@@ -18,7 +18,7 @@ var FirefoxOSComponent = (function () {
         this.storageService = storageService;
         this.storageService.init();
         //this.messages = [];
-        this.socket = io.connect("https://enigmatic-dawn-6875.herokuapp.com/FirefoxOS");
+        this.socket = io.connect("https://freechat-firefox.herokuapp.com/FirefoxOS");
         this.username = localStorage.getItem("username");
         localforage.getItem("firefoxOSMessages", function (err, value) {
             if (err) {

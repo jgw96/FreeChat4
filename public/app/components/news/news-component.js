@@ -18,7 +18,7 @@ var NewsComponent = (function () {
         this.storageService = storageService;
         this.storageService.init();
         //this.messages = [];
-        this.socket = io.connect("https://enigmatic-dawn-6875.herokuapp.com/News");
+        this.socket = io.connect("https://freechat-firefox.herokuapp.com/News");
         this.username = localStorage.getItem("username");
         localforage.getItem("newsMessages", function (err, value) {
             if (err) {
