@@ -1,6 +1,6 @@
 {
-  "short_name": "FreeChat Dev",
-  "name": "FreeChat Dev",
+  "short_name": "FreeChat",
+  "name": "FreeChat",
   "start_url": "/index.html",
   "display": "standalone",
   "orientation": "portrait"

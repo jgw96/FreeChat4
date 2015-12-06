@@ -5,7 +5,7 @@ const port = 8080;
 app.use(express.static(__dirname + '/public'));
 app.use("/modules/", express.static(__dirname + "/node_modules"))
 
-const io = require('socket.io').listen(app.listen(port));
+const io = require('socket.io').listen(app.listen(process.env.PORT || port));
 
 io.sockets.on('connection', (socket) => {
     //this happens whenever a user connects to the chat
