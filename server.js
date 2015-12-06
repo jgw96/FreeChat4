@@ -1,13 +1,13 @@
-var express = require("express");
-var app = express();
-var port = 8080;
+const express = require("express");
+const app = express();
+const port = 8080;
 
 app.use(express.static(__dirname + '/public'));
 app.use("/modules/", express.static(__dirname + "/node_modules"))
 
-var io = require('socket.io').listen(app.listen(port));
+const io = require('socket.io').listen(app.listen(port));
 
-io.sockets.on('connection', function (socket) {
+io.sockets.on('connection', (socket) => {
     //this happens whenever a user connects to the chat
     console.log("user connected");
     socket.emit('newUser');
@@ -15,7 +15,7 @@ io.sockets.on('connection', function (socket) {
     socket.broadcast.emit("userLogged");
     
     //this happens when a user has sent out a message
-    socket.on('send', function (data) {
+    socket.on('send', (data) => {
         //send the message to everyone, including myself
         io.sockets.emit('message', data);
         
@@ -23,19 +23,35 @@ io.sockets.on('connection', function (socket) {
     });
 });
 
-var news = io.of("/News");
+const news = io.of("/News");
 
-news.on("connection", function(socket) {
+news.on("connection", (socket) => {
     console.log("Someone connected to news");
     
     socket.emit("newNewsUser");
     
     socket.broadcast.emit("newsUserLogged");
     
-    socket.on("newsSend", function(data) {
+    socket.on("newsSend", (data) => {
         news.emit("newsMessage", data);
         
         socket.broadcast.emit("newsMessageAdded", data);
+    })
+})
+
+const firefoxOS = io.of("/FirefoxOS");
+
+firefoxOS.on("connection", (socket) => {
+    console.log("Someone connected to Firefox OS");
+    
+    socket.emit("newFirefoxOSUser");
+    
+    socket.broadcast.emit("firefoxOSUserLogged");
+    
+    socket.on("firefoxOSSend", (data) => {
+        firefoxOS.emit("firefoxOSMessage", data);
+        
+        socket.broadcast.emit("firefoxOSMessageAdded", data);
     })
 })
 

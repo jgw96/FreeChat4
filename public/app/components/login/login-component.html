@@ -1,9 +1,17 @@
 <section>
 	<div id="loginBox">
-		<h1 id="loginText">FireChat</h1>
+		<h1 id="loginText">FreeChat</h1>
 		
-		<input id="loginInput" #username class="form-control" type="text" placeholder="Name">
-		<button (click)="login(username.value)" class="btn btn-block btn-primary" type="button">Save</button>
-		<button [router-link]="['/Items']" class="btn btn-block btn-primary" type="button">Login</button>
+		<div class="animated" id="inputBox" [hidden]="saved">
+			<input id="loginInput" #username class="form-control" type="text" placeholder="Name">
+		</div>
+		
+		<div id="saveButton" class="animated" [hidden]="saved">
+			<button (click)="login(username.value)" class="button" type="button">Save</button>
+		</div>
+		
+		<div [hidden]="!saved">
+		    <button id="loginButton" [router-link]="['/Items']" class="button" type="button">Login</button>
+		</div>
 	</div>
 </section>

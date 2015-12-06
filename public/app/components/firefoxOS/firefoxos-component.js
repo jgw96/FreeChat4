@@ -12,15 +12,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var angular2_1 = require('angular2/angular2');
 var router_1 = require('angular2/router');
 var storage_service_1 = require("../../services/storage-service");
-var ItemsComponent = (function () {
-    function ItemsComponent(storageService) {
+var FirefoxOSComponent = (function () {
+    function FirefoxOSComponent(storageService) {
         var _this = this;
         this.storageService = storageService;
-        Notification.requestPermission();
         this.storageService.init();
-        this.socket = io.connect("http://192.168.0.6:8080");
+        //this.messages = [];
+        this.socket = io.connect("http://192.168.0.6:8080/FirefoxOS");
         this.username = localStorage.getItem("username");
-        localforage.getItem("messages", function (err, value) {
+        localforage.getItem("firefoxOSMessages", function (err, value) {
             if (err) {
                 console.log(err);
             }
@@ -34,47 +34,46 @@ var ItemsComponent = (function () {
                 }
             }
         });
-        this.socket.on("message", function (data) {
+        this.socket.on("firefoxOSMessage", function (data) {
             if (data.message) {
                 _this.messages.push(data);
-                _this.storageService.save("messages", _this.messages);
+                _this.storageService.save("firefoxOSMessages", _this.messages);
             }
             else {
                 console.log("error", data);
             }
         });
-        this.socket.on("messageAdded", function (data) {
+        this.socket.on("newFirefoxOSUser", function () {
+            new Notification("Welcome to the Firefox OS Room!");
+        });
+        this.socket.on("firefoxOSUserLogged", function () {
+            new Notification("Someone joined the Firefox OS Room!");
+        });
+        this.socket.on("firefoxOSMessageAdded", function (data) {
             new Notification(data.user + " " + "says" + " " + data.message);
         });
-        this.socket.on("newUser", function () {
-            new Notification("Welcome to FreeChat");
-        });
-        this.socket.on("userLogged", function () {
-            new Notification("A new user has joined chat");
-        });
     }
-    ItemsComponent.prototype.routerOnActivate = function (next, prev) {
+    FirefoxOSComponent.prototype.routerOnActivate = function (next, prev) {
         console.log("navigated");
-        document.querySelector("#test").classList.add("fadeIn");
-        document.querySelector("#testTwo").classList.add("fadeIn");
-        document.querySelector("#testThree").classList.add("fadeIn");
+        document.querySelector("#test").classList.add("slideInRight");
+        document.querySelector("#testTwo").classList.add("slideInRight");
+        document.querySelector("#testThree").classList.add("slideInRight");
     };
-    ItemsComponent.prototype.send = function (text) {
-        this.socket.emit("send", { message: text, user: this.username });
+    FirefoxOSComponent.prototype.send = function (text) {
+        console.log("send");
+        this.socket.emit("firefoxOSSend", { message: text, user: this.username });
+        console.log("sent");
     };
-    ItemsComponent.prototype.changed = function () {
-        console.log("it worked");
-    };
-    ItemsComponent = __decorate([
+    FirefoxOSComponent = __decorate([
         angular2_1.Component({
-            selector: 'shoppingItems',
-            templateUrl: 'app/components/items/items-component.html',
+            selector: "rooms",
+            templateUrl: 'app/components/firefoxOS/firefoxos-component.html',
             providers: [storage_service_1.StorageService],
-            directives: [router_1.RouterLink, angular2_1.NgFor]
+            directives: [angular2_1.NgFor, router_1.RouterLink]
         }), 
         __metadata('design:paramtypes', [storage_service_1.StorageService])
-    ], ItemsComponent);
-    return ItemsComponent;
+    ], FirefoxOSComponent);
+    return FirefoxOSComponent;
 })();
-exports.ItemsComponent = ItemsComponent;
-//# sourceMappingURL=items-component.js.map
+exports.FirefoxOSComponent = FirefoxOSComponent;
+//# sourceMappingURL=firefoxos-component.js.map

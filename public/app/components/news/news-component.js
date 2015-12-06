@@ -18,7 +18,7 @@ var NewsComponent = (function () {
         this.storageService = storageService;
         this.storageService.init();
         //this.messages = [];
-        this.socket = io.connect("http://localhost:3700/News");
+        this.socket = io.connect("http://192.168.0.6:8080/News");
         this.username = localStorage.getItem("username");
         localforage.getItem("newsMessages", function (err, value) {
             if (err) {
@@ -55,9 +55,9 @@ var NewsComponent = (function () {
     }
     NewsComponent.prototype.routerOnActivate = function (next, prev) {
         console.log("navigated");
-        document.querySelector("#test").classList.add("fadeIn");
-        document.querySelector("#testTwo").classList.add("fadeIn");
-        document.querySelector("#testThree").classList.add("fadeIn");
+        document.querySelector("#test").classList.add("slideInRight");
+        document.querySelector("#testTwo").classList.add("slideInRight");
+        document.querySelector("#testThree").classList.add("slideInRight");
     };
     NewsComponent.prototype.send = function (text) {
         console.log("send");

@@ -26,9 +26,9 @@ export class ItemsComponent implements OnActivate {
   username: string;
 
   constructor(private storageService: StorageService) {
-    //this.messages = [];
+    Notification.requestPermission();
     this.storageService.init();
-    this.socket = io.connect("http://localhost:3700");
+    this.socket = io.connect("http://192.168.0.6:8080");
     this.username = localStorage.getItem("username");
     
     localforage.getItem("messages", (err, value) => {
@@ -64,7 +64,7 @@ export class ItemsComponent implements OnActivate {
     })
     
     this.socket.on("newUser", () => {
-      new Notification("Welcome to FireChat");
+      new Notification("Welcome to FreeChat");
     })
     
     this.socket.on("userLogged", () => {

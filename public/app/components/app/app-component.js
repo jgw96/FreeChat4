@@ -16,6 +16,7 @@ var login_component_1 = require("../login/login-component");
 var room_component_1 = require("../room/room-component");
 var news_component_1 = require("../news/news-component");
 var settings_component_1 = require("../settings/settings-component");
+var firefoxos_component_1 = require("../firefoxOS/firefoxos-component");
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -30,7 +31,8 @@ var AppComponent = (function () {
             { path: "/", as: "Login", component: login_component_1.LoginComponent },
             { path: "/Rooms", as: "Rooms", component: room_component_1.RoomComponent },
             { path: "/News", as: "News", component: news_component_1.NewsComponent },
-            { path: "/Settings", as: "Settings", component: settings_component_1.SettingsComponent }
+            { path: "/Settings", as: "Settings", component: settings_component_1.SettingsComponent },
+            { path: "/FirefoxOS", as: "FirefoxOS", component: firefoxos_component_1.FirefoxOSComponent }
         ]), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

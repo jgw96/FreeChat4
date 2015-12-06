@@ -16,11 +16,13 @@ var SettingsComponent = (function () {
     }
     SettingsComponent.prototype.routerOnActivate = function (next, prev) {
         console.log("navigated");
-        document.querySelector("#test").classList.add("fadeIn");
-        document.querySelector("#testTwo").classList.add("fadeIn");
+        document.querySelector("#test").classList.add("slideInLeft");
+        document.querySelector("#testTwo").classList.add("slideInLeft");
     };
     SettingsComponent.prototype.clearMessages = function () {
         localStorage.removeItem("localforage/messages");
+        localStorage.removeItem("localforage/newsMessages");
+        localStorage.removeItem("localforage/firefoxOSMessages");
         new Notification("Messages cleared");
     };
     SettingsComponent = __decorate([

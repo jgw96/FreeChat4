@@ -35,7 +35,6 @@
 /* List items */
 [data-type="list"] li {
   width: 100%;
-  height: 6rem;
   box-sizing: border-box;
   border-bottom: solid 0.1rem #e7e7e7;
   color: #333;
@@ -133,7 +132,7 @@ li a:active {
 
 /* Text content */
 [data-type="list"] li p {
-  white-space: nowrap;
+  margin-bottom:1.5% !important;
   overflow: hidden;
   text-overflow: ellipsis;
   border: none;

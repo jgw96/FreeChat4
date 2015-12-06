@@ -1,0 +1,7 @@
+{
+  "short_name": "FreeChat Dev",
+  "name": "FreeChat Dev",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait"
+}

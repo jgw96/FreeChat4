@@ -1,0 +1,19 @@
+{
+  "name": "FreeChat Dev",
+  "description": "FreeChat is your chat portal to the world! FreeChat is a 100% anonymous chat room that allows you to instantly chat with anyone in the world! ",
+  "launch_path": "/index.html",
+  "icons": {
+    "512": "/notes512.png",
+    "128": "/notes/notes128.png"
+  },
+  "developer": {
+    "name": "Justin Willis",
+    "url": ""
+  },
+  "default_locale": "en",
+  "permissions": {
+  "desktop-notifications": {
+    "description": "Required to give notifications about messages and users."
+    }
+}
+}
