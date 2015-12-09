@@ -93,6 +93,12 @@ ul {
   overflow-y: scroll !important;
 }
 
+@media(min-height:530px) {
+  ul {
+    height: 37em;
+  }
+}
+
 @media(min-height:566px) {
   ul {
     height: 40em;
