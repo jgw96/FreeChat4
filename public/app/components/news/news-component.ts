@@ -33,15 +33,17 @@ export class NewsComponent implements OnActivate {
 				console.log(err)
 			}
 			else {
-				if (value.length > 50) {
-					localStorage.removeItem("localforage/messages");
-					localStorage.removeItem("localforage/newsMessages");
-					localStorage.removeItem("localforage/firefoxOSMessages");
+				if (value !== null) {
+					if (value.length > 50) {
+						localStorage.removeItem("localforage/messages");
+						localStorage.removeItem("localforage/newsMessages");
+						localStorage.removeItem("localforage/firefoxOSMessages");
 
-					this.messages = [];
-				} 
+						this.messages = [];
+					}
+				}
 				//there were no items saved
-				else if (value === null) {
+				if (value === null) {
 					this.messages = [];
 				}
 				//there were items saved

@@ -26,13 +26,16 @@ var ItemsComponent = (function () {
                 new Notification("Error fetching messages! Please reload the app");
             }
             else {
-                if (value.length > 50) {
-                    localStorage.removeItem("localforage/messages");
-                    localStorage.removeItem("localforage/newsMessages");
-                    localStorage.removeItem("localforage/firefoxOSMessages");
-                    _this.messages = [];
+                if (value !== null) {
+                    if (value.length > 50) {
+                        localStorage.removeItem("localforage/messages");
+                        localStorage.removeItem("localforage/newsMessages");
+                        localStorage.removeItem("localforage/firefoxOSMessages");
+                        _this.messages = [];
+                    }
                 }
-                else if (value === null) {
+                //there were no items saved
+                if (value === null) {
                     _this.messages = [];
                 }
                 else {
