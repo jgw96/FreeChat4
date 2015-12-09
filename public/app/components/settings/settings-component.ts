@@ -10,8 +10,8 @@ export class SettingsComponent implements OnActivate {
 	
 	routerOnActivate(next: ComponentInstruction, prev: ComponentInstruction) {
         console.log("navigated");
-		document.querySelector("#test").classList.add("slideInLeft");
-		document.querySelector("#testTwo").classList.add("slideInLeft");
+		document.querySelector("#test").classList.add("fadeInLeft");
+		document.querySelector("#testTwo").classList.add("fadeInLeft");
     }
 	
 	constructor() {
@@ -23,6 +23,14 @@ export class SettingsComponent implements OnActivate {
 		localStorage.removeItem("localforage/newsMessages");
 		localStorage.removeItem("localforage/firefoxOSMessages");
 		new Notification("Messages cleared");
+	}
+	
+	darkTheme() {
+		document.querySelector("body").style.backgroundColor="black";
+	}
+	
+	defaultTheme() {
+		document.querySelector("body").style.backgroundColor="#fff";
 	}
 	
 	

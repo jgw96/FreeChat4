@@ -23,10 +23,16 @@ var ItemsComponent = (function () {
         localforage.getItem("messages", function (err, value) {
             if (err) {
                 console.log(err);
+                new Notification("Error fetching messages! Please reload the app");
             }
             else {
-                //there were no items saved
-                if (value === null) {
+                if (value.length > 50) {
+                    localStorage.removeItem("localforage/messages");
+                    localStorage.removeItem("localforage/newsMessages");
+                    localStorage.removeItem("localforage/firefoxOSMessages");
+                    _this.messages = [];
+                }
+                else if (value === null) {
                     _this.messages = [];
                 }
                 else {
@@ -46,9 +52,6 @@ var ItemsComponent = (function () {
         this.socket.on("messageAdded", function (data) {
             new Notification(data.user + " " + "says" + " " + data.message);
         });
-        this.socket.on("newUser", function () {
-            new Notification("Welcome to FreeChat");
-        });
         this.socket.on("userLogged", function () {
             new Notification("A new user has joined chat");
         });
@@ -61,9 +64,6 @@ var ItemsComponent = (function () {
     };
     ItemsComponent.prototype.send = function (text) {
         this.socket.emit("send", { message: text, user: this.username });
-    };
-    ItemsComponent.prototype.changed = function () {
-        console.log("it worked");
     };
     ItemsComponent = __decorate([
         angular2_1.Component({

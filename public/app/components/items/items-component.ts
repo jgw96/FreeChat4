@@ -13,14 +13,14 @@ import { StorageService } from "../../services/storage-service";
   directives: [RouterLink, NgFor]
 })
 export class ItemsComponent implements OnActivate {
-  
+
   routerOnActivate(next: ComponentInstruction, prev: ComponentInstruction) {
-       console.log("navigated");
-		   document.querySelector("#test").classList.add("fadeIn");
-		   document.querySelector("#testTwo").classList.add("fadeIn");
-       document.querySelector("#testThree").classList.add("fadeIn");
+    console.log("navigated");
+    document.querySelector("#test").classList.add("fadeIn");
+    document.querySelector("#testTwo").classList.add("fadeIn");
+    document.querySelector("#testThree").classList.add("fadeIn");
   }
-    
+
   socket: any;
   messages: any[];
   username: string;
@@ -30,15 +30,23 @@ export class ItemsComponent implements OnActivate {
     this.storageService.init();
     this.socket = io.connect("https://freechat-firefox.herokuapp.com");
     this.username = localStorage.getItem("username");
-    
+
     localforage.getItem("messages", (err, value) => {
       if (err) {
         console.log(err)
+        new Notification("Error fetching messages! Please reload the app");
       }
       else {
-        
+
+        if (value.length > 50) {
+          localStorage.removeItem("localforage/messages");
+          localStorage.removeItem("localforage/newsMessages");
+          localStorage.removeItem("localforage/firefoxOSMessages");
+
+          this.messages = [];
+        } 
         //there were no items saved
-        if (value === null) {
+        else if (value === null) {
           this.messages = [];
         }
         //there were items saved
@@ -58,26 +66,18 @@ export class ItemsComponent implements OnActivate {
         console.log("error", data);
       }
     })
-    
+
     this.socket.on("messageAdded", (data) => {
       new Notification(data.user + " " + "says" + " " + data.message);
     })
-    
-    this.socket.on("newUser", () => {
-      new Notification("Welcome to FreeChat");
-    })
-    
+
     this.socket.on("userLogged", () => {
       new Notification("A new user has joined chat");
     })
   }
-  
+
   send(text: string) {
-    this.socket.emit("send", {message: text, user: this.username});
-  }
-  
-  changed() {
-    console.log("it worked");
+    this.socket.emit("send", { message: text, user: this.username });
   }
 
 

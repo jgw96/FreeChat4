@@ -12,9 +12,9 @@ export class FirefoxOSComponent implements OnActivate {
 
 	routerOnActivate(next: ComponentInstruction, prev: ComponentInstruction) {
 		console.log("navigated");
-		document.querySelector("#test").classList.add("slideInRight");
-		document.querySelector("#testTwo").classList.add("slideInRight");
-		document.querySelector("#testThree").classList.add("slideInRight");
+		document.querySelector("#test").classList.add("fadeInRight");
+		document.querySelector("#testTwo").classList.add("fadeInRight");
+		document.querySelector("#testThree").classList.add("fadeInRight");
     }
 
 	socket: any;
@@ -32,16 +32,21 @@ export class FirefoxOSComponent implements OnActivate {
 				console.log(err)
 			}
 			else {
-				
+				if (value.length > 50) {
+					localStorage.removeItem("localforage/messages");
+					localStorage.removeItem("localforage/newsMessages");
+					localStorage.removeItem("localforage/firefoxOSMessages");
+
+					this.messages = [];
+				} 
 				//there were no items saved
-				if (value === null) {
+				else if (value === null) {
 					this.messages = [];
 				}
 				//there were items saved
 				else {
 					this.messages = value;
 				}
-
 			}
 		})
 

@@ -16,14 +16,20 @@ var SettingsComponent = (function () {
     }
     SettingsComponent.prototype.routerOnActivate = function (next, prev) {
         console.log("navigated");
-        document.querySelector("#test").classList.add("slideInLeft");
-        document.querySelector("#testTwo").classList.add("slideInLeft");
+        document.querySelector("#test").classList.add("fadeInLeft");
+        document.querySelector("#testTwo").classList.add("fadeInLeft");
     };
     SettingsComponent.prototype.clearMessages = function () {
         localStorage.removeItem("localforage/messages");
         localStorage.removeItem("localforage/newsMessages");
         localStorage.removeItem("localforage/firefoxOSMessages");
         new Notification("Messages cleared");
+    };
+    SettingsComponent.prototype.darkTheme = function () {
+        document.querySelector("body").style.backgroundColor = "black";
+    };
+    SettingsComponent.prototype.defaultTheme = function () {
+        document.querySelector("body").style.backgroundColor = "#fff";
     };
     SettingsComponent = __decorate([
         angular2_1.Component({

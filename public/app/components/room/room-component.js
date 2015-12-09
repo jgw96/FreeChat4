@@ -16,8 +16,8 @@ var RoomComponent = (function () {
     }
     RoomComponent.prototype.routerOnActivate = function (next, prev) {
         console.log("navigated");
-        document.querySelector("#test").classList.add("slideInRight");
-        document.querySelector("#testTwo").classList.add("slideInRight");
+        document.querySelector("#test").classList.add("fadeInRight");
+        document.querySelector("#testTwo").classList.add("fadeInRight");
     };
     RoomComponent = __decorate([
         angular2_1.Component({
