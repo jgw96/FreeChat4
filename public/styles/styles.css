@@ -18,12 +18,14 @@ footer {
 
 #textInput {
     border-radius:0;
-    height:3em;
+    height:4em;
 }
 
 #sendButton {
-    border-radius:0;
-    height:3em;
+    border-radius: 0;
+    height: 4em;
+    border-color: #ccc;
+    border-width: 1px;
 }
 
 #loginBox {
