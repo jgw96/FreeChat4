@@ -10,6 +10,9 @@
 <main id="testTwo" class="animated" data-type="list">
   <header id="headerText">Settings</header>
   <ul>
+    <li class="settingItem" [router-link]="['/Login']">
+      <p>Log Out</p>
+    </li>
     <li class="settingItem" (click)="clearMessages()">
       <p>Clear Messages</p>
     </li>
