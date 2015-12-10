@@ -7,7 +7,7 @@
         "express": "latest",
         "angular2": "^2.0.0-alpha.44",
         "systemjs": "^0.19.5",
-        "bootstrap": "latest",
+        "bootstrap": "^3.3.5",
         "animate.css": "latest"
     },
     "author": "Justin Willis"
