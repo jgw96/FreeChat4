@@ -2,7 +2,6 @@
 import { Component, View, NgFor, NgModel } from 'angular2/angular2';
 import { RouterLink } from 'angular2/router';
 import { ObservableWrapper } from 'angular2/src/core/facade/async';
-import { DataService } from '../../services/data-service';
 import { StorageService } from "../../services/storage-service";
 
 
