@@ -60,12 +60,12 @@ const sports = io.of("/Sports");
 sports.on("connection", (socket) => {
     console.log("Someone connected to Sports");
     
-    socket.emit("sportsUser");
+    socket.emit("newSportsUser");
     
     socket.broadcast.emit("sportsUserLogged");
     
     socket.on("sportsSend", (data) => {
-        firefoxOS.emit("sportsMessage", data);
+        sports.emit("sportsMessage", data);
         
         socket.broadcast.emit("sportsMessageAdded", data);
     })
