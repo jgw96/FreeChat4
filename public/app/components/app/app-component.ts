@@ -6,6 +6,7 @@ import { RoomComponent } from "../room/room-component";
 import { NewsComponent } from "../news/news-component";
 import { SettingsComponent } from "../settings/settings-component";
 import { FirefoxOSComponent } from "../firefoxOS/firefoxos-component";
+import { SportsComponent } from "../sports/sports-component";
 
 @Component({ 
   selector: 'app',
@@ -18,7 +19,8 @@ import { FirefoxOSComponent } from "../firefoxOS/firefoxos-component";
   { path: "/Rooms",         as: "Rooms", component: RoomComponent },
   { path: "/News",          as: "News", component: NewsComponent},
   { path: "/Settings",      as: "Settings", component: SettingsComponent},
-  { path: "/FirefoxOS",     as: "FirefoxOS", component: FirefoxOSComponent}
+  { path: "/FirefoxOS",     as: "FirefoxOS", component: FirefoxOSComponent},
+  { path: "/Sports",        as: "Sports", component: SportsComponent}
 ])
 export class AppComponent {
 

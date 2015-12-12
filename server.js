@@ -55,5 +55,21 @@ firefoxOS.on("connection", (socket) => {
     })
 })
 
+const sports = io.of("/Sports");
+
+sports.on("connection", (socket) => {
+    console.log("Someone connected to Sports");
+    
+    socket.emit("sportsUser");
+    
+    socket.broadcast.emit("sportsUserLogged");
+    
+    socket.on("sportsSend", (data) => {
+        firefoxOS.emit("sportsMessage", data);
+        
+        socket.broadcast.emit("sportsMessageAdded", data);
+    })
+})
+
 
 console.log("Listening on port " + port);

@@ -1,14 +1,14 @@
 <section class="skin-comms" role="region">
   <header id="test" class="animated">
-    <button [router-link]="['/Settings']"><span class="icon icon-options">options</span></button>
+    <button [router-link]="['/Rooms']"><span class="icon icon-back">back</span></button>
     <menu type="toolbar">
-      <button [router-link]="['/Rooms']"><span class="icon icon-add">add</span></button>
+      <button><span class="icon icon-ad">add</span></button>
     </menu>
-    <h1>FreeChat</h1>
+    <h1>Sports</h1>
   </header>
 </section>
 <main id="testTwo" class="animated" data-type="list">
-  <header id="headerText">Home Chat Room</header>
+  <header id="headerText">Messages</header>
   <ul>
     <li *ng-for="#message of messages">
       <p id="userText">{{message.user}}</p>
@@ -20,7 +20,7 @@
   <div class="input-group">
     <input id="textInput" #message type="text" class="form-control" placeholder="New Message...">
     <span class="input-group-btn">
-       <button (click)="send(message.value)" id="sendButton" class="btn btn-default" type="button">Send</button>
-    </span>
+        <button (click)="send(message.value)" id="sendButton" class="btn btn-default" type="button">Send</button>
+      </span>
   </div>
 </footer>
