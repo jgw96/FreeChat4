@@ -1,3 +1,6 @@
+/// <reference path="../../typings/tsd.d.ts" />
+
+import * as localforage from "localforage";
 import { Component, View, NgFor } from 'angular2/angular2';
 import { RouterLink } from 'angular2/router';
 import { StorageService } from "../../services/storage-service";

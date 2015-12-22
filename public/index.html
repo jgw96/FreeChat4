@@ -43,7 +43,10 @@
     <script src="/modules/localforage/dist/localforage.min.js"></script>
     <script>
         System.config({
-            packages: {'app': {defaultExtension: 'js'}}
+            packages: { 'app': { defaultExtension: 'js' } },
+            paths: {
+                localforage: '/modules/localforage/dist/localforage.js'
+            }
         });
         System.import('app/bootstrap').catch(console.log.bind(console));
     </script>

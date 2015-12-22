@@ -93,6 +93,10 @@ ul {
   overflow-y: scroll !important;
 }
 
+.whiteText {
+  color: white !important;
+}
+
 @media(min-height:530px) {
   ul {
     height: 37em;

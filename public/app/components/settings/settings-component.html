@@ -13,6 +13,9 @@
     <li class="settingItem" [router-link]="['/Login']">
       <p>Log Out</p>
     </li>
+    <li class="settingItem" (click)="clearMessages()" [router-link]="['/Login']">
+      <p>Emergency Log Out</p>
+    </li>
     <li class="settingItem" (click)="clearMessages()">
       <p>Clear Messages</p>
     </li>
