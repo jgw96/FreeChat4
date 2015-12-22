@@ -89,7 +89,7 @@ button {
 }
 
 ul {
-  height:32em;
+  height:25em;
   overflow-y: scroll !important;
 }
 
@@ -99,24 +99,24 @@ ul {
 
 @media(min-height:530px) {
   ul {
-    height: 37em;
+    height: 32em;
   }
 }
 
 @media(min-height:566px) {
   ul {
-    height: 40em;
+    height: 34em;
   }
 }
 
 @media(min-height:610px) {
   ul {
-    height:46em;
+    height:40em;
   }
 }
 
 @media(min-height:650px) {
   ul {
-    height:50em;
+    height:43em;
   }
 }
