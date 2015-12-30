@@ -20,10 +20,10 @@ var SettingsComponent = (function () {
         document.querySelector("#testTwo").classList.add("fadeInLeft");
     };
     SettingsComponent.prototype.clearMessages = function () {
-        localStorage.removeItem("localforage/messages");
-        localStorage.removeItem("localforage/newsMessages");
-        localStorage.removeItem("localforage/firefoxOSMessages");
-        localStorage.removeItem("localforage/sportsMessages");
+        localforage.removeItem("messages");
+        localforage.removeItem("newsMessages");
+        localforage.removeItem("firefoxOSMessages");
+        localforage.removeItem("sportsMessages");
         new Notification("Messages cleared");
     };
     SettingsComponent.prototype.darkTheme = function () {

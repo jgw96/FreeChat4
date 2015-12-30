@@ -19,10 +19,10 @@ export class SettingsComponent implements OnActivate {
 	}
 
 	clearMessages() {
-		localStorage.removeItem("localforage/messages");
-		localStorage.removeItem("localforage/newsMessages");
-		localStorage.removeItem("localforage/firefoxOSMessages");
-		localStorage.removeItem("localforage/sportsMessages");
+		localforage.removeItem("messages");
+		localforage.removeItem("newsMessages");
+		localforage.removeItem("firefoxOSMessages");
+		localforage.removeItem("sportsMessages");
 		new Notification("Messages cleared");
 	}
 
