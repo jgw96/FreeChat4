@@ -19,6 +19,7 @@ var ItemsComponent = (function () {
         var _this = this;
         this.storageService = storageService;
         Notification.requestPermission();
+        var worker = new Worker("app/components/items/item-worker.js");
         this.storageService.init();
         this.socket = io.connect("https://freechat-firefox.herokuapp.com");
         this.username = localStorage.getItem("username");
@@ -30,9 +31,7 @@ var ItemsComponent = (function () {
             else {
                 if (value !== null) {
                     if (value.length > 50) {
-                        localStorage.removeItem("localforage/messages");
-                        localStorage.removeItem("localforage/newsMessages");
-                        localStorage.removeItem("localforage/firefoxOSMessages");
+                        worker.postMessage("start");
                         _this.messages = [];
                     }
                 }

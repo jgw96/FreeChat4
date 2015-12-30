@@ -4,7 +4,7 @@ var StorageService = (function () {
     function StorageService() {
     }
     StorageService.prototype.init = function () {
-        localforage.setDriver(localforage.LOCALSTORAGE);
+        localforage.setDriver(localforage.INDEXEDDB);
     };
     StorageService.prototype.save = function (itemName, item) {
         //was item

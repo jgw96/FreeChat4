@@ -11,7 +11,7 @@ export class StorageService {
     }
 
     init() {
-        localforage.setDriver(localforage.LOCALSTORAGE);
+        localforage.setDriver(localforage.INDEXEDDB);
     }
 
     save(itemName: string, item: any) {

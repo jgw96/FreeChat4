@@ -26,6 +26,8 @@ export class FirefoxOSComponent implements OnActivate {
 		//this.messages = [];
         this.socket = io.connect("https://freechat-firefox.herokuapp.com/FirefoxOS");
         this.username = localStorage.getItem("username");
+        
+        const worker = new Worker("app/components/firefoxOS/firefoxos-worker.js");
 
 		localforage.getItem("firefoxOSMessages", (err, value) => {
 			if (err) {
@@ -34,10 +36,8 @@ export class FirefoxOSComponent implements OnActivate {
 			else {
 				if (value !== null) {
 					if (value.length > 50) {
-						localStorage.removeItem("localforage/messages");
-						localStorage.removeItem("localforage/newsMessages");
-						localStorage.removeItem("localforage/firefoxOSMessages");
-
+                        worker.postMessage("start");
+					
 						this.messages = [];
 					}
 				}

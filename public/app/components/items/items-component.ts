@@ -29,10 +29,12 @@ export class ItemsComponent implements OnActivate {
     constructor(private storageService: StorageService) {
         Notification.requestPermission();
         
+        const worker = new Worker("app/components/items/item-worker.js");
+        
         this.storageService.init();
-        
+
         this.socket = io.connect("https://freechat-firefox.herokuapp.com");
-        
+
         this.username = localStorage.getItem("username");
 
 
@@ -45,12 +47,8 @@ export class ItemsComponent implements OnActivate {
 
                 if (value !== null) {
 
-
                     if (value.length > 50) {
-                        localStorage.removeItem("localforage/messages");
-                        localStorage.removeItem("localforage/newsMessages");
-                        localStorage.removeItem("localforage/firefoxOSMessages");
-
+                        worker.postMessage("start");
                         this.messages = [];
                     }
                 }
@@ -66,7 +64,7 @@ export class ItemsComponent implements OnActivate {
 
             }
         })
-
+        
         this.socket.on("message", (data) => {
             if (data.message) {
                 this.messages.push(data);
