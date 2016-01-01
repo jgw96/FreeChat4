@@ -22,6 +22,7 @@ var NewsComponent = (function () {
         //this.messages = [];
         this.socket = io.connect("https://freechat-firefox.herokuapp.com/News");
         this.username = localStorage.getItem("username");
+        var worker = new Worker("app/components/news/news-worker.js");
         localforage.getItem("newsMessages", function (err, value) {
             if (err) {
                 console.log(err);
@@ -29,9 +30,7 @@ var NewsComponent = (function () {
             else {
                 if (value !== null) {
                     if (value.length > 50) {
-                        localStorage.removeItem("localforage/messages");
-                        localStorage.removeItem("localforage/newsMessages");
-                        localStorage.removeItem("localforage/firefoxOSMessages");
+                        worker.postMessage("start");
                         _this.messages = [];
                     }
                 }

@@ -17,7 +17,6 @@ var FirefoxOSComponent = (function () {
         var _this = this;
         this.storageService = storageService;
         this.storageService.init();
-        //this.messages = [];
         this.socket = io.connect("https://freechat-firefox.herokuapp.com/FirefoxOS");
         this.username = localStorage.getItem("username");
         var worker = new Worker("app/components/firefoxOS/firefoxos-worker.js");
@@ -67,9 +66,7 @@ var FirefoxOSComponent = (function () {
         document.querySelector("#testThree").classList.add("fadeInRight");
     };
     FirefoxOSComponent.prototype.send = function (text) {
-        console.log("send");
         this.socket.emit("firefoxOSSend", { message: text, user: this.username });
-        console.log("sent");
     };
     FirefoxOSComponent = __decorate([
         angular2_1.Component({

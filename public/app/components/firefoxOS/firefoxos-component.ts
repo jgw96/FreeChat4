@@ -23,7 +23,6 @@ export class FirefoxOSComponent implements OnActivate {
 
 	constructor(private storageService: StorageService) {
 		this.storageService.init();
-		//this.messages = [];
         this.socket = io.connect("https://freechat-firefox.herokuapp.com/FirefoxOS");
         this.username = localStorage.getItem("username");
         
@@ -37,7 +36,6 @@ export class FirefoxOSComponent implements OnActivate {
 				if (value !== null) {
 					if (value.length > 50) {
                         worker.postMessage("start");
-					
 						this.messages = [];
 					}
 				}
@@ -76,9 +74,7 @@ export class FirefoxOSComponent implements OnActivate {
 	}
 
 	send(text: string) {
-		console.log("send");
         this.socket.emit("firefoxOSSend", { message: text, user: this.username });
-		console.log("sent");
     }
 
 

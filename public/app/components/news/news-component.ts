@@ -30,6 +30,8 @@ export class NewsComponent implements OnActivate {
 		//this.messages = [];
         this.socket = io.connect("https://freechat-firefox.herokuapp.com/News");
         this.username = localStorage.getItem("username");
+        
+        const worker = new Worker("app/components/news/news-worker.js");
 
 		localforage.getItem("newsMessages", (err, value) => {
 			if (err) {
@@ -38,10 +40,7 @@ export class NewsComponent implements OnActivate {
 			else {
 				if (value !== null) {
 					if (value.length > 50) {
-						localStorage.removeItem("localforage/messages");
-						localStorage.removeItem("localforage/newsMessages");
-						localStorage.removeItem("localforage/firefoxOSMessages");
-
+						worker.postMessage("start");
 						this.messages = [];
 					}
 				}
