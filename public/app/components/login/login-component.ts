@@ -17,6 +17,9 @@ export class LoginComponent {
             "bubbles": true,
             "cancelable": false
         });
+        
+        let body = <HTMLElement>document.querySelector("body");
+        body.style.backgroundColor = "lightseagreen";
 
         this.saved = false;
 

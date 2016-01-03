@@ -19,6 +19,8 @@ var LoginComponent = (function () {
             "bubbles": true,
             "cancelable": false
         });
+        var body = document.querySelector("body");
+        body.style.backgroundColor = "lightseagreen";
         this.saved = false;
         if (localStorage.getItem("username") !== null) {
             document.querySelector("#loginButton").dispatchEvent(clickEvent);

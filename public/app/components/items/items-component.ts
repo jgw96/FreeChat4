@@ -28,6 +28,9 @@ export class ItemsComponent implements OnActivate {
     password: string;
 
     constructor(private storageService: StorageService) {
+        let defaultThemeColor = <HTMLElement>document.querySelector("body");
+        defaultThemeColor.style.backgroundColor = "#fff";
+        
         Notification.requestPermission();
         
         const worker = new Worker("app/components/items/item-worker.js");

@@ -17,6 +17,8 @@ var ItemsComponent = (function () {
     function ItemsComponent(storageService) {
         var _this = this;
         this.storageService = storageService;
+        var defaultThemeColor = document.querySelector("body");
+        defaultThemeColor.style.backgroundColor = "#fff";
         Notification.requestPermission();
         var worker = new Worker("app/components/items/item-worker.js");
         this.storageService.init();
