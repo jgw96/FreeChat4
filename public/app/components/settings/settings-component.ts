@@ -1,5 +1,7 @@
 import { Component, View, NgFor } from 'angular2/angular2';
-import { RouterLink } from 'angular2/router';
+import { RouterLink, OnActivate, ComponentInstruction } from 'angular2/router';
+
+declare var Notification;
 
 @Component({
 	selector: "settings",
@@ -27,11 +29,13 @@ export class SettingsComponent implements OnActivate {
 	}
 
 	darkTheme() {
-		document.querySelector("body").style.backgroundColor = "black";
+	    let darkThemeColor = <HTMLElement>document.querySelector("body");
+        darkThemeColor.style.backgroundColor = "black";
 	}
 
 	defaultTheme() {
-		document.querySelector("body").style.backgroundColor = "#fff";
+		let defaultThemeColor = <HTMLElement>document.querySelector("body");
+        defaultThemeColor.style.backgroundColor = "#fff";
 	}
 
 

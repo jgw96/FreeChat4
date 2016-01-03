@@ -1,9 +1,11 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
-import * as localforage from "localforage";
 import { Component, View, NgFor } from 'angular2/angular2';
-import { RouterLink } from 'angular2/router';
+import { RouterLink, OnActivate, ComponentInstruction } from 'angular2/router';
 import { StorageService } from "../../services/storage-service";
+
+declare var Notification;
+declare var io;
 
 @Component({
 	selector: "rooms",

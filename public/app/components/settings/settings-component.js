@@ -27,10 +27,12 @@ var SettingsComponent = (function () {
         new Notification("Messages cleared");
     };
     SettingsComponent.prototype.darkTheme = function () {
-        document.querySelector("body").style.backgroundColor = "black";
+        var darkThemeColor = document.querySelector("body");
+        darkThemeColor.style.backgroundColor = "black";
     };
     SettingsComponent.prototype.defaultTheme = function () {
-        document.querySelector("body").style.backgroundColor = "#fff";
+        var defaultThemeColor = document.querySelector("body");
+        defaultThemeColor.style.backgroundColor = "#fff";
     };
     SettingsComponent = __decorate([
         angular2_1.Component({

@@ -1,5 +1,4 @@
 /// <reference path="./../typings/tsd.d.ts" />
-var localforage = require("localforage");
 var StorageService = (function () {
     function StorageService() {
     }

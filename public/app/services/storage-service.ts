@@ -1,7 +1,5 @@
 /// <reference path="./../typings/tsd.d.ts" />
 
-import * as localforage from "localforage";
-
 export class StorageService {
 
     messages: Object[];
