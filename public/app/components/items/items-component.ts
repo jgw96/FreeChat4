@@ -33,7 +33,7 @@ export class ItemsComponent implements OnActivate {
         
         Notification.requestPermission();
         
-        const worker = new Worker("app/components/items/item-worker.js");
+        const worker: any = new Worker("app/components/items/item-worker.js");
         
         this.storageService.init();
 
@@ -42,7 +42,7 @@ export class ItemsComponent implements OnActivate {
         this.username = localStorage.getItem("username");
 
 
-        localforage.getItem("messages", (err, value) => {
+        localforage.getItem("messages", (err: string, value: any) => {
             if (err) {
                 console.log(err)
                 new Notification("Error fetching messages! Please reload the app");
@@ -69,7 +69,7 @@ export class ItemsComponent implements OnActivate {
             }
         })
         
-        this.socket.on("message", (data) => {
+        this.socket.on("message", (data: any) => {
             if (data.message) {
                 this.messages.push(data);
                 this.storageService.save("messages", this.messages);
@@ -79,7 +79,7 @@ export class ItemsComponent implements OnActivate {
             }
         })
 
-        this.socket.on("messageAdded", (data) => {
+        this.socket.on("messageAdded", (data: any) => {
             new Notification(data.user + " " + "says" + " " + data.message);
         })
 

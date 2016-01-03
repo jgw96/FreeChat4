@@ -29,7 +29,7 @@ export class FirefoxOSComponent implements OnActivate {
         this.socket = io.connect("https://freechat-firefox.herokuapp.com/FirefoxOS");
         this.username = localStorage.getItem("username");
         
-        const worker = new Worker("app/components/firefoxOS/firefoxos-worker.js");
+        const worker: any = new Worker("app/components/firefoxOS/firefoxos-worker.js");
 
 		localforage.getItem("firefoxOSMessages", (err, value) => {
 			if (err) {
@@ -53,7 +53,7 @@ export class FirefoxOSComponent implements OnActivate {
 			}
 		})
 
-		this.socket.on("firefoxOSMessage", (data) => {
+		this.socket.on("firefoxOSMessage", (data: any) => {
             if (data.message) {
                 this.messages.push(data);
 				this.storageService.save("firefoxOSMessages", this.messages);
@@ -71,7 +71,7 @@ export class FirefoxOSComponent implements OnActivate {
 			new Notification("Someone joined the Firefox OS Room!");
 		})
 
-		this.socket.on("firefoxOSMessageAdded", (data) => {
+		this.socket.on("firefoxOSMessageAdded", (data: any) => {
             new Notification(data.user + " " + "says" + " " + data.message);
         })
 	}

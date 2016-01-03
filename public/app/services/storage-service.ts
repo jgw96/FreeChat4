@@ -15,7 +15,7 @@ export class StorageService {
     save(itemName: string, item: any) {
 
         //was item
-        localforage.setItem(itemName, item, (err, value) => {
+        localforage.setItem(itemName, item, (err: string, value: any) => {
             if (err) {
                 console.log(err);
             }

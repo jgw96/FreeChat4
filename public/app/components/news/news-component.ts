@@ -35,7 +35,7 @@ export class NewsComponent implements OnActivate {
         
         const worker = new Worker("app/components/news/news-worker.js");
 
-		localforage.getItem("newsMessages", (err, value) => {
+		localforage.getItem("newsMessages", (err: string, value: any) => {
 			if (err) {
 				console.log(err)
 			}
@@ -57,7 +57,7 @@ export class NewsComponent implements OnActivate {
 			}
 		})
 
-		this.socket.on("newsMessage", (data) => {
+		this.socket.on("newsMessage", (data: any) => {
             if (data.message) {
                 this.messages.push(data);
 				this.storageService.save("newsMessages", this.messages);
@@ -75,7 +75,7 @@ export class NewsComponent implements OnActivate {
 			new Notification("Someone joined the News Room!");
 		})
 
-		this.socket.on("newsMessageAdded", (data) => {
+		this.socket.on("newsMessageAdded", (data: any) => {
             new Notification(data.user + " " + "says" + " " + data.message);
         })
 	}
