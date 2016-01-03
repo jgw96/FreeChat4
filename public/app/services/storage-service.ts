@@ -1,5 +1,7 @@
 /// <reference path="./../typings/tsd.d.ts" />
 
+declare var Notification;
+
 export class StorageService {
 
     messages: Object[];
@@ -24,4 +26,5 @@ export class StorageService {
             }
         });
     }
+
 }
